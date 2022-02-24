@@ -1,0 +1,67 @@
+@import "mixins.scss";
+
+// MODAL STYLING
+.modal-dialog {
+  .modal-title {
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  hr {
+    border: 1px solid $white-smoke;
+  }
+
+  .modal-header {
+    margin: 1rem 1rem 2rem 1.5rem;
+
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    .modal-close-icon {
+      position: absolute;
+      right: 5%;
+      top: 20%;
+    }
+  }
+
+  .modal-body {
+    margin: 1rem 1rem 1rem 1.5rem;
+    height: 75vh;
+    overflow-y: scroll;
+
+    @include filter-checkbox;
+  }
+
+  .modal-footer {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    bottom: 0;
+    background: $white;
+    border: 4px solid $white-smoke;
+
+    button {
+      width: 40%;
+      span {
+        font-size: 1.25rem;
+      }
+      margin: 1rem;
+      outline: none;
+      text-transform: uppercase;
+      padding: 0.5rem 2rem;
+    }
+
+    .clear-filter {
+      background: $white;
+      border: 3px solid $black;
+      box-sizing: border-box;
+      margin-right: 0.5rem;
+    }
+    .save-filter {
+      background: $black;
+      border: 3px solid $black;
+      color: $white;
+      margin-left: 0.5rem;
+    }
+  }
+}
