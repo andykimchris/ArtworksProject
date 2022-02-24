@@ -1,0 +1,204 @@
+@import "variables.scss";
+@import "mixins.scss";
+@import "modal.scss";
+
+.main {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.title-shopping-cart {
+  display: flex;
+  position: relative;
+  margin: 1.5rem 0rem;
+  .shopping-cart {
+    font-size: 2rem;
+    position: absolute;
+    right: 0%;
+    top: -25%;
+  }
+}
+
+.main-item-name {
+  .item-name {
+    h2 {
+      font-weight: 600;
+    }
+  }
+  .item-image {
+    position: relative;
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    .item-of-the-day {
+      position: absolute;
+      bottom: 0%;
+      background: white;
+      padding: 1rem 1.5rem;
+    }
+  }
+  .add-item-button {
+    margin-top: 1.4rem;
+    button {
+      background: $black;
+      color: $white;
+      word-spacing: 0.1em;
+      width: 100%;
+      padding: 1rem;
+      span {
+        font-size: 1.25em;
+      }
+    }
+  }
+}
+
+.item-description-row {
+  display: flex;
+  .item-description-col {
+    flex: 60%;
+    .item-description {
+      p {
+        color: $dark-grey;
+        font-size: 1.2rem;
+        letter-spacing: 0.05rem;
+      }
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+      img {
+        width: 80%;
+        height: auto;
+        object-fit: cover;
+      }
+    }
+  }
+  .other-items-col {
+    flex: 40%;
+  }
+  border-bottom: 4px solid $white-smoke;
+  padding-bottom: 1.2rem;
+}
+
+.other-items-col {
+  h3 {
+    text-align: end;
+  }
+  .also-buy-items {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+    .other-items-img {
+      margin-right: 5rem;
+    }
+    .other-items-img:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .item-details {
+    text-align: end;
+    p {
+      color: $dark-grey;
+    }
+  }
+}
+
+.sorting-options {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  .filters {
+    h5 {
+      font-size: 1rem;
+      span {
+        color: $light-grey;
+      }
+    }
+    span {
+      color: $light-grey;
+    }
+  }
+  .sorting {
+    position: absolute;
+    bottom: 20%;
+    right: 0%;
+    .filter-icon:hover {
+      cursor: pointer;
+    }
+    h5 {
+      span {
+        color: $light-grey;
+      }
+    }
+  }
+}
+
+.filter-art-collection-row {
+  display: flex;
+  .filter-art-collection-col-1 {
+    flex: 20%;
+    @include filter-checkbox;
+  }
+
+  .filter-art-collection-col-2 {
+    flex: 80%;
+    .filter-art-collection-col-2-row {
+      display: flex;
+      justify-content: space-between;
+      .art-collection {
+        .best-seller {
+          position: absolute;
+          left: 0%;
+          background: white;
+          padding: 0.8rem 3rem;
+        }
+
+        .art-collection-img {
+          position: relative;
+          img {
+            width: 100%;
+          }
+          .add-collection-item-button {
+            position: absolute;
+            width: 100%;
+            bottom: 0%;
+
+            .add-to-cart-button {
+              display: block;
+              width: 100%;
+            }
+            button {
+              background-color: $black;
+              color: $white;
+              font-size: 1.2rem;
+              padding: 0.8rem 6.21rem;
+              border: none;
+            }
+          }
+        }
+
+        h2 {
+          margin-bottom: 0;
+        }
+        p {
+          font-weight: 700;
+          color: $dark-grey;
+        }
+        h3 {
+          font-weight: 900;
+          color: $black;
+        }
+        h5 {
+          color: $dark-grey;
+        }
+      }
+    }
+  }
+}
+
+@import "media_queries.scss";
