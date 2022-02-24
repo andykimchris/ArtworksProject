@@ -1,0 +1,130 @@
+// MEDIA QUERIES
+@media (min-width: 425px) {
+  .main {
+    margin-left: 7em;
+    margin-top: 5em;
+    margin-right: 7em;
+
+    .title-shopping-cart {
+      .shopping-cart {
+        font-size: 3.5rem;
+      }
+      padding-bottom: 2.5rem;
+      margin: 1.5rem 0rem;
+      border-bottom: 4px solid $white-smoke;
+    }
+
+    .main-item-name {
+      margin-top: 2.5rem;
+      position: relative;
+      .item-name {
+        font-size: 1.65rem;
+      }
+      .item-image {
+        margin-top: 3rem;
+        img {
+          height: 65vh;
+        }
+        .item-of-the-day {
+          padding: 1.5rem 3.5rem;
+          font-size: 1.5rem;
+          font-weight: 700;
+        }
+      }
+
+      .add-item-button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: 0;
+        button {
+          span {
+            font-size: 1.5rem;
+            letter-spacing: 0.25rem;
+          }
+          border: none;
+          padding: 1rem 4.5rem;
+        }
+      }
+    }
+
+    .item-description-container {
+      .item-description-col {
+        max-width: 55%;
+      }
+      .item-description {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        max-width: 70%;
+        h3 {
+          text-align: left;
+          font-size: 2rem;
+        }
+        p {
+          font-size: 1.2rem;
+        }
+      }
+      .people-also-buy-col {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .item-description-row {
+    display: inline-block;
+  }
+
+  .other-items-col {
+    .also-buy-items {
+      justify-content: flex-start;
+      .other-items-img {
+        margin-right: 1rem;
+      }
+    }
+    h3 {
+      text-align: left;
+    }
+    .item-details {
+      text-align: left;
+    }
+  }
+}
+
+@media (max-width: 1320px) {
+  .filter-art-collection-col-1 {
+    display: none;
+  }
+}
+
+@media (max-width: 1110px) {
+  .filter-art-collection-col-2-row {
+    display: block !important;
+  }
+  .item-description-row {
+    .item-description {
+      p {
+        font-size: 0.8rem !important;
+      }
+    }
+  }
+}
+
+@media (min-width: 1080px) {
+  .item-description {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 420px) {
+  hr {
+    border: 1px solid $white-smoke;
+  }
+  .item-name {
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
+}
