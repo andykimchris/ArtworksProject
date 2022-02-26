@@ -6,7 +6,9 @@ import {
 import checkboxes from "../config/checkboxes";
 
 const ArtContextDefaultValues: ArtContextTypes = {
+  isModalOpen: false,
   checkedItems: [],
+  handleModalStatus: () => false,
   totalItems: checkboxes,
   updatedCheckBoxItem: () => [],
   filteredItems: () => [],
@@ -22,8 +24,12 @@ type ArtProviderProps = {
 };
 
 export const ArtProvider: FC<ArtProviderProps> = ({ children }) => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [checkedItems, setCheckedItems] = useState<checkBoxInterface[]>([]);
   const [totalItems, setTotalItems] = useState(checkboxes);
+
+  const handleModalStatus = (modalStatus: boolean) =>
+    setIsModalOpen(modalStatus);
 
   const updatedCheckBoxItem = (id: string, checked: boolean) => {
     setTotalItems((prevUpdatedItems: checkBoxInterface[]) => {
@@ -66,6 +72,8 @@ export const ArtProvider: FC<ArtProviderProps> = ({ children }) => {
       value={{
         checkedItems,
         totalItems,
+        isModalOpen,
+        handleModalStatus,
         updatedCheckBoxItem,
         filteredItems,
         clearAllCheckedItems,

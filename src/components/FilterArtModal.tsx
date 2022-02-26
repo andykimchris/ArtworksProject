@@ -2,24 +2,22 @@ import { Modal, Button } from "react-bootstrap";
 import CloseIcon from "../vectors/CloseIcon";
 import { useContext } from "react";
 
-import FilterOptions from "../components/FilterOptions";
+import FilterOptions from "./FilterOptions";
 import { ArtContext } from "../contexts/ArtGalleryContext";
 
-interface FilterArtModalProps {
-  isOpen: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
+interface FilterArtModalProps {}
 
-const FilterArtModal: React.FC<FilterArtModalProps> = ({ isOpen, setOpen }) => {
-  const { clearAllCheckedItems } = useContext(ArtContext);
+const FilterArtModal: React.FC<FilterArtModalProps> = () => {
+  const { clearAllCheckedItems, isModalOpen, handleModalStatus } =
+    useContext(ArtContext);
 
-  const handleModalClose = () => setOpen(false);
+  const handleModalClose = () => handleModalStatus(false);
   const handleClearCheckedItems = () => {
     clearAllCheckedItems();
   };
 
   return (
-    <Modal show={isOpen}>
+    <Modal show={isModalOpen}>
       <Modal.Header>
         <Modal.Title>Filter</Modal.Title>
         <div className="modal-close-icon" onClick={handleModalClose}>
