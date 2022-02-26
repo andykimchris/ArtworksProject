@@ -1,13 +1,7 @@
 import { Form } from "react-bootstrap";
+import { CheckBoxesPropsInterface } from "../utilities/globalInterfaces";
 
-interface CheckBoxesProps {
-  id: string;
-  label: string;
-  checked: boolean;
-  onChange: (e: React.FormEvent) => void;
-}
-
-const CheckBox: React.FC<CheckBoxesProps> = ({
+const CheckBox: React.FC<CheckBoxesPropsInterface> = ({
   id,
   label,
   checked,

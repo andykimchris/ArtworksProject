@@ -1,4 +1,4 @@
-import { checkBoxInterface } from "../utilities/modelInterfaces";
+import { checkBoxInterface } from "../utilities/globalInterfaces";
 
 const checkboxes: checkBoxInterface[] = [
   {

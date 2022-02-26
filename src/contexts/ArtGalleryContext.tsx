@@ -1,14 +1,9 @@
 import React, { FC, createContext, useState } from "react";
-import { checkBoxInterface } from "../utilities/modelInterfaces";
+import {
+  ArtContextTypes,
+  checkBoxInterface,
+} from "../utilities/globalInterfaces";
 import checkboxes from "../config/checkboxes";
-
-type ArtContextTypes = {
-  checkedItems: checkBoxInterface[];
-  totalItems: checkBoxInterface[];
-  updatedCheckBoxItem: Function;
-  filteredItems: Function;
-  clearAllCheckedItems: Function;
-};
 
 const ArtContextDefaultValues: ArtContextTypes = {
   checkedItems: [],
