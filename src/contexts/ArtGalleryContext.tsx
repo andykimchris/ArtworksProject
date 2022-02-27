@@ -88,6 +88,33 @@ export const ArtProvider: FC<ArtProviderProps> = ({ children }) => {
 
   const handleResizeEvent = () => setCheckWindowWidth(window.innerWidth);
   const handleCurrPage = (num: number) => setCurrPage(num);
+  const handleModalOpen = () => handleModalStatus(true);
+
+  const handleSorting = (_sortOption: string, _sortAscOrDesc: string) => {
+    const sortedArtWorks = sortArtWorks(_sortOption, _sortAscOrDesc, artWorks);
+    setArtWorks(sortedArtWorks);
+  };
+
+  const handleSortByNameOrPrice = () => {
+    if (sortOption === "name") {
+      handleSorting("price", sortAscOrDesc);
+      setSortOption((_) => "price");
+    } else {
+      handleSorting("name", sortAscOrDesc);
+      setSortOption((_) => "name");
+    }
+  };
+
+  const handleSortAscOrDesc = () => {
+    if (sortAscOrDesc === "asc") {
+      handleSorting(sortOption, "desc");
+      setSortAscOrDesc((_) => "desc");
+    } else {
+      handleSorting(sortOption, "asc");
+      setSortAscOrDesc((_) => "asc");
+    }
+  };
+
   const handleModalStatus = (modalStatus: boolean) =>
     setIsModalOpen(modalStatus);
 
