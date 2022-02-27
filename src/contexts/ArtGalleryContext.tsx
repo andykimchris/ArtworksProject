@@ -71,6 +71,14 @@ export const ArtProvider: FC<ArtProviderProps> = ({ children }) => {
     fetchArtWorks();
   }, [key]);
 
+  useEffect(() => {
+    window.addEventListener("resize", handleResizeEvent);
+
+    return () => {
+      window.removeEventListener("resize", handleResizeEvent);
+    };
+  }, []);
+  const handleResizeEvent = () => setCheckWindowWidth(window.innerWidth);
   const handleModalStatus = (modalStatus: boolean) =>
     setIsModalOpen(modalStatus);
 
