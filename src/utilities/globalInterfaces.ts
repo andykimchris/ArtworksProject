@@ -48,10 +48,23 @@ export interface artWorkInterface {
 }
 
 export type ArtContextTypes = {
+  currPage: number;
+  totalPages: number;
   isModalOpen: boolean;
-  handleModalStatus: Function;
+  isLoading: boolean;
+  windowWidth: number;
+  sortOption: string;
+  sortAscOrDesc: string;
+
+  artWorks: artWorkInterface[];
   checkedItems: checkBoxInterface[];
   totalItems: checkBoxInterface[];
+
+  handleModalOpen: Function;
+  handleModalStatus: Function;
+  handleCurrPage: Function;
+  handleSortByNameOrPrice: Function;
+  handleSortAscOrDesc: Function;
   updatedCheckBoxItem: Function;
   filteredItems: Function;
   clearAllCheckedItems: Function;

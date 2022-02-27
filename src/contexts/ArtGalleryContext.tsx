@@ -1,15 +1,30 @@
-import React, { FC, createContext, useState } from "react";
+import React, { FC, createContext, useState, useEffect } from "react";
 import {
   ArtContextTypes,
+  artWorkInterface,
   checkBoxInterface,
 } from "../utilities/globalInterfaces";
 import checkboxes from "../config/checkboxes";
+import { ARTWORKS_PER_PAGE } from "../utilities/constants";
+import axios from "axios";
+import { sortArtWorks } from "../utilities/sortArtworks";
 
 const ArtContextDefaultValues: ArtContextTypes = {
+  currPage: 1,
+  totalPages: 0,
+  windowWidth: 1000,
   isModalOpen: false,
+  isLoading: true,
+  sortOption: "",
+  sortAscOrDesc: "",
+  artWorks: [],
   checkedItems: [],
-  handleModalStatus: () => false,
   totalItems: checkboxes,
+  handleModalStatus: () => false,
+  handleModalOpen: () => true,
+  handleCurrPage: () => null,
+  handleSortAscOrDesc: () => null,
+  handleSortByNameOrPrice: () => null,
   updatedCheckBoxItem: () => [],
   filteredItems: () => [],
   clearAllCheckedItems: () => [],
