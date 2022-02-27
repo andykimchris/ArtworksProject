@@ -78,7 +78,16 @@ export const ArtProvider: FC<ArtProviderProps> = ({ children }) => {
       window.removeEventListener("resize", handleResizeEvent);
     };
   }, []);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setTotalPages(Math.ceil(artWorks.length / ARTWORKS_PER_PAGE));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
+
   const handleResizeEvent = () => setCheckWindowWidth(window.innerWidth);
+  const handleCurrPage = (num: number) => setCurrPage(num);
   const handleModalStatus = (modalStatus: boolean) =>
     setIsModalOpen(modalStatus);
 
