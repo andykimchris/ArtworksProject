@@ -39,9 +39,18 @@ type ArtProviderProps = {
 };
 
 export const ArtProvider: FC<ArtProviderProps> = ({ children }) => {
+  const [currPage, setCurrPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const [isLoading, setisLoading] = useState<boolean>(true);
+  const [windowWidth, setCheckWindowWidth] = useState(window.innerWidth);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [checkedItems, setCheckedItems] = useState<checkBoxInterface[]>([]);
   const [totalItems, setTotalItems] = useState(checkboxes);
+  const [sortOption, setSortOption] = useState<string>("name");
+  const [sortAscOrDesc, setSortAscOrDesc] = useState<string>("asc");
+  const [artWorks, setArtWorks] = useState<artWorkInterface[]>([]);
+
+  const key = "artworks";
 
   const handleModalStatus = (modalStatus: boolean) =>
     setIsModalOpen(modalStatus);
@@ -57,9 +66,9 @@ export const ArtProvider: FC<ArtProviderProps> = ({ children }) => {
 
   const filteredItems = (id: string, checked: boolean) => {
     setCheckedItems((prevCheckedItems: checkBoxInterface[]) => {
-      let isInCluded = prevCheckedItems.filter((item) => item.id === id);
+      let isIncluded = prevCheckedItems.filter((item) => item.id === id);
       let items;
-      if (isInCluded.length) {
+      if (isIncluded.length) {
         items = prevCheckedItems.filter((item) => item.id !== id);
       } else {
         let checkedItem = {
@@ -85,9 +94,20 @@ export const ArtProvider: FC<ArtProviderProps> = ({ children }) => {
   return (
     <ArtContext.Provider
       value={{
+        currPage,
+        totalPages,
+        isLoading,
+        sortOption,
+        sortAscOrDesc,
+        windowWidth,
+        handleSortByNameOrPrice,
+        handleSortAscOrDesc,
+        handleCurrPage,
         checkedItems,
         totalItems,
         isModalOpen,
+        artWorks,
+        handleModalOpen,
         handleModalStatus,
         updatedCheckBoxItem,
         filteredItems,
