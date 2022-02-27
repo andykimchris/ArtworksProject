@@ -52,6 +52,25 @@ export const ArtProvider: FC<ArtProviderProps> = ({ children }) => {
 
   const key = "artworks";
 
+  useEffect(() => {
+    const fetchArtWorks = async () => {
+      const artWorkData = localStorage.getItem(key)!;
+      if (artWorkData === null) {
+        await axios.get("/api/get-artworks").then((response) => {
+          setArtWorks(response.data.artworks);
+          localStorage.setItem(key, JSON.stringify(response.data.artworks));
+          setisLoading(false);
+        });
+      }
+      const parsedData = JSON.parse(artWorkData);
+      if (parsedData !== null) {
+        setArtWorks(parsedData);
+        setisLoading(false);
+      }
+    };
+    fetchArtWorks();
+  }, [key]);
+
   const handleModalStatus = (modalStatus: boolean) =>
     setIsModalOpen(modalStatus);
 
