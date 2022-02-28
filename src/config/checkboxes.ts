@@ -1,6 +1,6 @@
 import { checkBoxInterface } from "../utilities/globalInterfaces";
 
-const checkboxes: checkBoxInterface[] = [
+export const filterByCategoryCheckBoxes: checkBoxInterface[] = [
   {
     id: "People",
     label: "People",
@@ -38,4 +38,25 @@ const checkboxes: checkBoxInterface[] = [
   },
 ];
 
-export default checkboxes;
+export const filterByPriceCheckboxes: checkBoxInterface[] = [
+  {
+    id: "Lower than $20",
+    label: "Lower than $20",
+    checked: false,
+  },
+  {
+    id: "$20 - $100",
+    label: "$20 - $100",
+    checked: false,
+  },
+  {
+    id: "$100 - $200",
+    label: "$100 - $200",
+    checked: false,
+  },
+  {
+    id: "More than $200",
+    label: "More than $200",
+    checked: false,
+  },
+];
