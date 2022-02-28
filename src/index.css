@@ -10,6 +10,7 @@ body {
   font-family: "Archivo", sans-serif;
   overflow: auto;
   position: relative;
+  overflow-x: hidden !important;
 }
 
 code {
