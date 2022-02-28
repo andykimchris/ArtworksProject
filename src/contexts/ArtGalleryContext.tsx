@@ -4,7 +4,7 @@ import {
   artWorkInterface,
   checkBoxInterface,
 } from "../utilities/globalInterfaces";
-import checkboxes from "../config/checkboxes";
+import { filterByCategoryCheckBoxes, filterByPriceCheckboxes } from "../config/checkboxes";
 import { ARTWORKS_PER_PAGE } from "../utilities/constants";
 import axios from "axios";
 import { sortArtWorks } from "../utilities/sortArtworks";
@@ -19,7 +19,12 @@ const ArtContextDefaultValues: ArtContextTypes = {
   sortAscOrDesc: "",
   artWorks: [],
   checkedItems: [],
-  totalItems: checkboxes,
+  filterPriceRange: 0,
+  totalItems: filterByCategoryCheckBoxes,
+  priceRangeItem: filterByPriceCheckboxes,
+  handleFilteredPages: () => null,
+  handleFilteredPriceRange: () => null,
+  handlePriceRangeItem: () => null,
   handleModalStatus: () => false,
   handleModalOpen: () => true,
   handleCurrPage: () => null,
@@ -45,8 +50,10 @@ export const ArtProvider: FC<ArtProviderProps> = ({ children }) => {
   const [windowWidth, setCheckWindowWidth] = useState(window.innerWidth);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [checkedItems, setCheckedItems] = useState<checkBoxInterface[]>([]);
-  const [totalItems, setTotalItems] = useState(checkboxes);
+  const [totalItems, setTotalItems] = useState(filterByCategoryCheckBoxes);
+  const [priceRangeItem, setPriceRangeItem] = useState(filterByPriceCheckboxes);
   const [sortOption, setSortOption] = useState<string>("name");
+  const [filterPriceRange, setFilterPriceRange] = useState<number>(0);
   const [sortAscOrDesc, setSortAscOrDesc] = useState<string>("asc");
   const [artWorks, setArtWorks] = useState<artWorkInterface[]>([]);
 
@@ -93,6 +100,24 @@ export const ArtProvider: FC<ArtProviderProps> = ({ children }) => {
   const handleSorting = (_sortOption: string, _sortAscOrDesc: string) => {
     const sortedArtWorks = sortArtWorks(_sortOption, _sortAscOrDesc, artWorks);
     setArtWorks(sortedArtWorks);
+  };
+
+  const handleFilteredPages = (totalFilteredPages: number) =>
+    setTotalPages(totalFilteredPages);
+
+  const handleFilteredPriceRange = (priceRange: number) => {
+    setFilterPriceRange(priceRange);
+  };
+
+  const handlePriceRangeItem = (id: string, checked: boolean) => {
+    setPriceRangeItem((prevPriceRangeItems: checkBoxInterface[]) => {
+      let updatedPriceItems = prevPriceRangeItems.map((item) =>
+        item.id === id
+          ? { ...item, checked: checked }
+          : { ...item, checked: false }
+      );
+      return updatedPriceItems;
+    });
   };
 
   const handleSortByNameOrPrice = () => {
@@ -163,6 +188,11 @@ export const ArtProvider: FC<ArtProviderProps> = ({ children }) => {
         sortOption,
         sortAscOrDesc,
         windowWidth,
+        priceRangeItem,
+        filterPriceRange,
+        handleFilteredPages,
+        handleFilteredPriceRange,
+        handlePriceRangeItem,
         handleSortByNameOrPrice,
         handleSortAscOrDesc,
         handleCurrPage,

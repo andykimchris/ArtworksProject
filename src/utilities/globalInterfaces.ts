@@ -55,11 +55,16 @@ export type ArtContextTypes = {
   windowWidth: number;
   sortOption: string;
   sortAscOrDesc: string;
+  filterPriceRange: number;
 
   artWorks: artWorkInterface[];
   checkedItems: checkBoxInterface[];
   totalItems: checkBoxInterface[];
+  priceRangeItem: checkBoxInterface[];
 
+  handleFilteredPriceRange: Function;
+  handleFilteredPages: Function;
+  handlePriceRangeItem: Function;
   handleModalOpen: Function;
   handleModalStatus: Function;
   handleCurrPage: Function;
