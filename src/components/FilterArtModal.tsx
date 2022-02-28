@@ -14,7 +14,9 @@ const FilterArtModal: React.FC<FilterArtModalProps> = () => {
   const handleModalClose = () => handleModalStatus(false);
   const handleClearCheckedItems = () => {
     clearAllCheckedItems();
+    handleModalClose()
   };
+  const handleSavedItems = () => handleModalStatus(false);
 
   return (
     <Modal show={isModalOpen}>
@@ -33,7 +35,7 @@ const FilterArtModal: React.FC<FilterArtModalProps> = () => {
         <Button className="clear-filter" onClick={handleClearCheckedItems}>
           <span>Clear</span>
         </Button>
-        <Button className="save-filter">
+        <Button className="save-filter" onClick={handleSavedItems}>
           <span>Save</span>
         </Button>
       </Modal.Footer>

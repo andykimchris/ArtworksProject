@@ -171,12 +171,18 @@ export const ArtProvider: FC<ArtProviderProps> = ({ children }) => {
   };
 
   const clearAllCheckedItems = () => {
+    setCheckedItems([])
     setTotalItems((prevUpdatedItems: checkBoxInterface[]) => {
       let updatedItems = prevUpdatedItems.map(
         (item) => true && { ...item, checked: false }
       );
       return updatedItems;
     });
+    setPriceRangeItem((prevPriceRangeItems: checkBoxInterface[]) => {
+      let updatedPriceItems = prevPriceRangeItems.map((item) => true && { ...item, checked: false });
+      return updatedPriceItems;
+    });
+    setFilterPriceRange(0);
   };
 
   return (

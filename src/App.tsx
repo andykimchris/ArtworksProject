@@ -61,7 +61,7 @@ const App = () => {
             </div>
 
             <div className="item-image">
-              <img src={featured.image.src} alt={featured.image.alt} />
+              <img src={featured.image.src} alt={featured.image.alt} loading="lazy" />
               <div className="item-of-the-day">Photo of the day</div>
             </div>
 
@@ -87,7 +87,7 @@ const App = () => {
                 <div className="also-buy-items">
                   {featured.details.recommendations.map((recommendation) => (
                     <Col key={recommendation.src} className="other-items-img">
-                      <img src={recommendation.src} alt={recommendation.alt} />
+                      <img src={recommendation.src} alt={recommendation.alt} loading="lazy"/>
                     </Col>
                   ))}
                 </div>
