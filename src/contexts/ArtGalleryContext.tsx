@@ -63,7 +63,7 @@ export const ArtProvider: FC<ArtProviderProps> = ({ children }) => {
     const fetchArtWorks = async () => {
       const artWorkData = localStorage.getItem(key)!;
       if (artWorkData === null) {
-        await axios.get("/api/get-artworks").then((response) => {
+        await axios.get("https://artwork-server.herokuapp.com/api/get-artworks").then((response) => {
           setArtWorks(response.data.artworks);
           localStorage.setItem(key, JSON.stringify(response.data.artworks));
           setisLoading(false);
