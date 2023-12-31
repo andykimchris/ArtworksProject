@@ -39,7 +39,7 @@ export const ArtContext = createContext<ArtContextTypes>(
   ArtContextDefaultValues
 );
 
-type ArtProviderProps = {
+interface ArtProviderProps {
   children: React.ReactElement;
 };
 
